@@ -22,7 +22,7 @@ To begin, you will need:
     * QnA Maker cognitive service
     * Application Insights
 * A team with the users who will be sending messages with this app. (You can add or remove team members later!)
-* A copy of the Diversity and Inclusion Connect app GitHub repo (https://github.com/v-haalam/arm-test)
+* A copy of the Diversity and Inclusion Connect app GitHub repo (https://github.com/OfficeDev/microsoft-teams-apps-diversityandinclusion)
 * A reasonable set of Question and Answer pairs to set up the knowledge base for the bot.
 
 - - -
@@ -109,7 +109,7 @@ Register an Azure AD application in your tenant's directory.
 
 1. Wait for the deployment to finish. You can check the progress of the deployment from the "Notifications" pane of the Azure Portal. It may take **up to an hour** for the deployment to finish.
 
-    > If the deployment fails, see [this section](https://github.com/v-haalam/arm-test/wiki/Troubleshooting#1-code-deployment-failure) of the Troubleshooting guide.
+    > If the deployment fails, see [this section](https://github.com/OfficeDev/microsoft-teams-apps-diversityandinclusion/wiki/Troubleshooting#1-code-deployment-failure) of the Troubleshooting guide.
 
 1. Once the deployment is successfully completed, go to the deployment's "Outputs" tab, and note down the follwing values. We will need them later.
     * **botId:** This is the Microsoft Application ID for the Diversity and Inclusion Connect app. For the following steps, it will be referred to as `%botId%`.
@@ -119,7 +119,7 @@ Register an Azure AD application in your tenant's directory.
 
 1. Note that you have the `%botId%` and `%appDomain%` values from the previous step (Step 2).
 
-    > If do not have these values, refer [this section](https://github.com/v-haalam/arm-test/wiki/Troubleshooting#2-forgetting-the-botId-or-appDomain) of the Troubleshooting guide for steps to get these values.
+    > If do not have these values, refer [this section](https://github.com/OfficeDev/microsoft-teams-apps-diversityandinclusion/wiki/Troubleshooting#2-forgetting-the-botId-or-appDomain) of the Troubleshooting guide for steps to get these values.
 
 1. Go to **App Registrations** page [here](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) and open the app you created (in Step 1) from the application list.
 
@@ -170,26 +170,19 @@ Continuing from the Azure AD app registration page where we ended Step 3.
     * Select “Microsoft Graph”, then select **Delegated permissions** and check the following permissions,
         1. **Group.Read.All**
         2. **AppCatalog.Read.All**
-        3. **Group.ReadWrite.All**
-        4. **offline_access**
-        5. **openid**
-        6. **profile**
-        7. **TeamMember.Read.All**
-        8. **User.Read**
 
     * then select **Application permissions** and check the following permissions,
         1. **Group.Read.All**
-        2. **Group.ReadWrite.All**
-        3. **TeamMember.Read.All**
-        4. **TeamsAppInstallation.ReadWriteForUser.All**
-        5. **User.Read.All**
+        2. **TeamsAppInstallation.ReadWriteForUser.All**
+        3. **User.Read.All**
 
     * Click on **Add Permissions** to commit your changes.
 
     ![Azure AD API permissions](images/multitenant_app_permissions_1.png)
+
     ![Azure AD API permissions](images/multitenant_app_permissions_2.png)
 
-    > Please refer to [Solution overview](https://github.com/v-haalam/arm-test/wiki/Solution-overview#microsoft-graph-api) for more details about the above permissions.
+    > Please refer to [Solution overview](https://github.com/OfficeDev/microsoft-teams-apps-diversityandinclusion/wiki/Solution-overview#microsoft-graph-api) for more details about the above permissions.
 
 4. If you are logged in as the Global Administrator, click on the “Grant admin consent for %tenant-name%” button to grant admin consent, else inform your Admin to do the same through the portal.
    <br/>
@@ -209,7 +202,7 @@ Use the following values when connecting to the QnA service:
 * **Azure subscription name**: The Azure subscription to which the ARM template was deployed.
 * **Azure QnA service**: The QnA service created during the deployment. This is the same as the "Base resource name"; for example, if you chose "contosodiconnect" as the base name, the QnA Maker service will be named `contosodiconnect`.
 
-[[https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-2.png| Settings page]]
+![Screenshot of settings](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-2.png)
 
 ### Multi-Turn Enablement
 With the new updates, the knowledge base can now support multi-turn conversations. To understand the basics of multi-turn conversations, navigate to the [QnA Maker documentation](https://docs.microsoft.com/en-us/azure/cognitive-services/QnAMaker/how-to/multiturn-conversation#what-is-a-multi-turn-conversation) to understand about multi-turn conversations. To enable multi-turn on the newly created knowledge base, go to this [link](https://docs.microsoft.com/en-us/azure/cognitive-services/QnAMaker/how-to/multiturn-conversation#create-a-multi-turn-conversation-from-a-documents-structure) to enable multi-turn extraction on the knowledge base. 
@@ -219,7 +212,6 @@ With the new updates, the knowledge base can now support multi-turn conversation
 After [publishing the knowledge base](https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/tutorials/create-publish-query-in-portal#publish-to-get-knowledge-base-endpoints), note the knowledge base ID (see screenshot).
 
 ![Publish KB](images/kb_publishing.PNG)
-<!--- [[/Images/kb_publishing.png | Publish KB]] -->
 
 Remember the knowledge base ID: we will need it in the next step.
 
